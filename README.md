@@ -1,0 +1,1 @@
+General scripts for powercli - vmware
