@@ -37,9 +37,15 @@ foreach ($clonename in $new_vm)
     # Use in case there are datastore clusters
     $datastorelist = Get-Datastore -Location $DatastoreCluster | sort -descending FreeSpaceMB
     $datastore = $datastorelist[0].Name
+    
+    # Custom OS Spec with same name as VM
+    $spec = get-osCustomizationSpec -name $clonename
+
+
     "Clone $clonename in $datastore"
 
-	if (New-VM -Name $clonename -ResourcePool $respool -VM $sourceVM -Location $folder -Datastore $datastore -DiskStorageFormat Thick )
+    if (New-VM -Name $clonename -ResourcePool $respool -VM $sourceVM -Location $folder -Datastore $datastore -DiskStorageFormat Thick -OSCustomizationSpec $spec)
+    #if (New-VM -Name $clonename -ResourcePool $respool -VM $sourceVM -Location $folder -Datastore $datastore -DiskStorageFormat Thick )
 		{"DONE $clonename"}
 	else
 		{"Something wrong with cloning"}
