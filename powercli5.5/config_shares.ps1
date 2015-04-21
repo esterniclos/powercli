@@ -19,4 +19,4 @@ $vm = get-vm -Location $rp | WHERE {$_.PowerState -eq "PoweredOff"}
 
 
 
-$vm |Get-VMResourceConfiguration | Set-VMResourceConfiguration -CpuSharesLvel:Low -memSharesLevel:Low -CpuReservationMhz:0 -MemReservationMB:0
+$vm |Get-VMResourceConfiguration | Set-VMResourceConfiguration -CpuSharesLevel:Low -memSharesLevel:Low -CpuReservationMhz:0 -MemReservationMB:0
