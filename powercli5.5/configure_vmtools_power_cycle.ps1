@@ -11,12 +11,12 @@
 #
 Function configure_vmtools_power_cycle ( $vm, [bool] $force )
 {
-       
-
+    # Older versions:       
+    # $is_windows = ($vm.Guest.State -eq "PoweredOn") -and  ($vm.Guest.OSFullName -Match "Windows")
+     $is_windows = ($vm.Guest.State -eq "Running") -and  ($vm.Guest.OSFullName -Match "Windows")
    
-    # Comment if you want to upgrade non windows vm
-    if ((($vm.Guest.State -eq "PoweredOn") -and  ($vm.Guest.OSFullName.Contains("Windows")) -or ($force)))
-        
+    #  Comment this line if you want to upgrade non running windows.
+    if ( $is_windows -or $force)        
        {
     
         write-host "Configure vmtools check and upgrade in every powercycle: " $vm.Name $vm.Guest.OSFullName
