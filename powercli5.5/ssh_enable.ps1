@@ -2,8 +2,10 @@
 # based on : http://www.techshifter.com/2012/01/11/vsphere-powercli-mass-enabling-disabling-of-ssh-on-vsphere-hosts/
 #
 # Ester Niclos Ferreras
-# Last updated: 12/12/13
+# Last updated: 17/05/13
 
+
+Add-PSSnapin VMware.VimAutomation.Core
 
 Get-Cluster | Foreach {
 $cl=$_
